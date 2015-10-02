@@ -11,3 +11,6 @@ And the UnityHTTP Repo by andyBurke - https://github.com/andyburke/UnityHTTP
 MiniAPI falls under the GPL due to its basis on MiniJSON and UnityHTTP which are licensed under the GPL.
 You should be aware of this license and determine if it is acceptable for your project.
 
+# About
+This is a wrapper of the UnityHTTP to work specifically with GET/POST methods of APIs in Unity3D. Can be used either from mobile, web, or pc/mac applications.
+
