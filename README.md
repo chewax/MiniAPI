@@ -4,7 +4,7 @@ Simple C# module to handle basic GET/POST API Calls From Unity3D
 
 
 # Attribution 
-The MiniJSON repo by darktable - https://gist.github.com/darktable/1411710
+The MiniJSON repo by darktable - https://gist.github.com/darktable/1411710 </br>
 And the UnityHTTP Repo by andyBurke - https://github.com/andyburke/UnityHTTP
 
 # LICENSE
