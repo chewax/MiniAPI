@@ -12,8 +12,8 @@ namespace MiniAPI {
 		private Hashtable routes = new Hashtable();
 
 		public delegate void GETCallback(HTTP.Request request);
-		public delegate void GETListCallback(List<System.Object> resObject);
-		public delegate void GETDictCallback(Dictionary<string, System.Object> resObject);
+		public delegate void GETListCallback(List<object> resObject);
+		public delegate void GETDictCallback(Dictionary<string, object> resObject);
 
 		/*
 		 * Sets and stores auth token. If token expires then it must be reset with this function.
@@ -84,7 +84,7 @@ namespace MiniAPI {
 			}
 			
 			req.Send( ( request ) => { 
-				var resList = Json.Deserialize(request.response.Text) as List<System.Object>;
+				var resList = Json.Deserialize(request.response.Text) as List<object>;
 				cb(resList); 
 			});
 		}
@@ -101,7 +101,26 @@ namespace MiniAPI {
 			}
 			
 			req.Send( ( request ) => { 
-				var resObj = Json.Deserialize(request.response.Text) as Dictionary<string, System.Object>;
+				var resObj = Json.Deserialize(request.response.Text) as Dictionary<string, object>;
+				cb(resObj); 
+			});
+		}
+
+
+		/**
+		 * POST with result parsed as Dictionary<string,object>
+		 */
+		public void POST (string endPoint, Hashtable body, GETDictCallback cb) {
+			Console.WriteLine(this.baseURL + endPoint);
+			HTTP.Request req = new HTTP.Request( "post", this.baseURL + endPoint, body );
+			
+			// Add headers
+			foreach (DictionaryEntry h in headers) {
+				req.AddHeader((string) h.Key, (string) h.Value);
+			}
+			
+			req.Send( ( request ) => { 
+				var resObj = Json.Deserialize(request.response.Text) as Dictionary<string, object>;
 				cb(resObj); 
 			});
 		}
